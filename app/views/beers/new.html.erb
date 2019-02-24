@@ -1,1 +1,23 @@
-<h1> Hej </h1>
+<h1>Hej</h1>
+
+<% if @beer.errors.any? %>
+  <h2>The following errors prevented the article from saving:</h2>
+  <ul>
+  <% @beer.errors.full_messages.each do |msg|%>
+  <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= simple_form_for @beer, url: beers_path do |f| %>
+  <p>
+    <%= f.input :title, label: 'Your title please' %><br>
+  </p>
+  <p>
+    <%= f.input :text %><br>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
